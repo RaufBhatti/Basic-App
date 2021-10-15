@@ -1,0 +1,45 @@
+footer{
+    margin-top: 30px;
+    text-align: center;
+}
+
+@media screen and (min-width: 900px) {
+    .grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 360px) {
+    .grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.nav-link {
+    font-size: large;
+}
+
+.nav-link:hover {
+    color: teal;
+    font-weight: bold;
+}
+.mybtn {
+    margin-left: 2px;
+    margin-right: 2px;
+}
