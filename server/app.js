@@ -64,21 +64,21 @@ app.get('/users/:id', async (req, res) => {
 });
 
 // Searching...
-app.get('/search', async (req, res) => {
-    console.log(`Search Object String : ${JSON.stringify(req.query)}`);
-    const { q } = req.query;
-    try {
-        const products = await Product.find({
-            $or: [
-                { title: { $regex: q, $options: "i" } },
-                { image: { $regex: q, $options: "i" } }
-            ]
-        }).sort({ price: 'desc' }).exec();
-        res.send(products);
-    } catch (err) {
-        res.send({ 'error': err.message });
-    }
-});
+// app.get('/search', async (req, res) => {
+//     console.log(`Search Object String : ${JSON.stringify(req.query)}`);
+//     const { q } = req.query;
+//     try {
+//         const products = await Product.find({
+//             $or: [
+//                 { title: { $regex: q, $options: "i" } },
+//                 { image: { $regex: q, $options: "i" } }
+//             ]
+//         }).sort({ price: 'desc' }).exec();
+//         res.send(products);
+//     } catch (err) {
+//         res.send({ 'error': err.message });
+//     }
+// });
 
 // // Add Product
 // app.post('/products', async (req, res) => {
