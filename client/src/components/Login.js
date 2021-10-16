@@ -23,7 +23,7 @@ const Login = ({ setLoginUser }) => {
                     toast.success(res.data.message);
                     setLoginUser(res.data.user);
                     setLoading(false);
-                    history.push('/');
+                    history.push(user.role === 'Admin' ? '/' : '/home');
                 } else if (res.data.status === 401) {
                     toast.warning(res.data.message);
                     setLoading(false);

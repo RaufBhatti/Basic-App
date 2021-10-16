@@ -11,6 +11,8 @@ import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
 import EditUser from "./components/EditUser";
 import AddProduct from "./components/AddProduct";
+import Airways from "./components/Airways";
+import Home from "./components/Home";
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -19,7 +21,9 @@ function App() {
     <>
       <Navbar email={user.email} role={user.role} setLoginUser={setLoginUser} />
       <Switch>
-        <Route exact path='/'>{user && user._id ? <Dashboard setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}</Route>
+        <Route exact path='/'>{user && user._id && user.role === 'Admin' ? <Dashboard setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}</Route>
+        <Route path='/home'>{user && user._id ? <Home setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}</Route>
+        <Route exact path='/Airways/:country'>{user && user._id && user.role === 'Admin' ? <Airways setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser} />}</Route>
         <Route path='/products'>{user && user._id ? <Products userRole={user.role} /> : <Login setLoginUser={setLoginUser} />}</Route>
         <Route path='/ProductDetails'>{user && user._id ? <ProductDetails userRole={user.role} /> : <Login setLoginUser={setLoginUser} />}</Route>
         <Route path='/EditProduct/:id'>{user && user._id && (user.role === 'Admin' || user.role === 'Operator' || user.role === 'Manager') ? <EditProduct /> : <Login setLoginUser={setLoginUser} />}</Route>

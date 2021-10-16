@@ -7,6 +7,7 @@ const { createHttpTerminator } = require('http-terminator');
 const cors = require('cors');
 const User = require('./models/user');
 const Product = require('./models/product');
+const Airway = require('./models/airway');
 
 const PORT = 4000;
 const app = express();
@@ -190,6 +191,26 @@ app.post('/products', async (req, res) => {
                     res.send(err)
                 } else {
                     res.send({ message: 'Product Added Successfully!', status: 200 });
+                }
+            })
+        }
+    })
+});
+
+//Add Airway (from External API) 
+app.post('/airway/:country', async (req, res) => {
+    const { name, country, slogan, head_quaters, website, established } = req.body;
+    console.log(req.body);
+    Airway.findOne({ name: name }, (err, airway) => {
+        if (airway) {
+            res.send({ message: 'Data Already Exists!', status: 401 })
+        } else {
+            const airway = new Airway({ name, country, slogan, head_quaters, website, established });
+            airway.save(err => {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.send({ message: 'Data Added Successfully!', status: 200 });
                 }
             })
         }
