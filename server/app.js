@@ -203,14 +203,14 @@ app.post('/airway/:country', async (req, res) => {
     console.log(req.body);
     Airway.findOne({ name: name }, (err, airway) => {
         if (airway) {
-            res.send({ message: 'Data Already Exists!', status: 401 })
+            res.send({ message: 'Booking Already Exists!', status: 401 })
         } else {
             const airway = new Airway({ name, country, slogan, head_quaters, website, established });
             airway.save(err => {
                 if (err) {
                     res.send(err)
                 } else {
-                    res.send({ message: 'Data Added Successfully!', status: 200 });
+                    res.send({ message: 'Booking done Successfully!', status: 200 });
                 }
             })
         }
