@@ -9,7 +9,7 @@ const Register = ({ userRole }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [role, setRole] = useState('Admin');
+    const [role, setRole] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
@@ -42,39 +42,35 @@ const Register = ({ userRole }) => {
     return (
         <>
             <ToastContainer />
-            <form onSubmit={handleSubmit} className='container grid mt-4' style={{ width: '480px', border: '1px solid black', padding: '30px', borderRadius: '7px' }}>
-                <h2 style={{ marginBottom: '15px', textAlign: 'center' }}>Register</h2>
-                <div className="mb-3">
-                    <label for="username" className="form-label">Username</label>
-                    <input type="text" name='username' required className="form-control" id="username"
+            <form onSubmit={handleSubmit} className='container grid mt-5' style={{ width: '480px', border: '1px solid black', padding: '30px', borderRadius: '7px' }}>
+                <h1 style={{ marginBottom: '8%', textAlign: 'center' }}>Register</h1>
+                <div className="mb-4">
+                    <input type="text" placeholder='Username' name='username' required className="form-control" id="username"
                         value={username} onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
-                    <label for="email" className="form-label">Email</label>
-                    <input type="email" name='email' required className="form-control" id="email" aria-describedby="emailHelp"
+                <div className="mb-4">
+                    <input type="email" placeholder='Email Address' name='email' required className="form-control" id="email" aria-describedby="emailHelp"
                         value={email} onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
-                    <label for="password" className="form-label">Password</label>
-                    <input type="password" name='password' required className="form-control" id="password"
+                <div className="mb-4">
+                    <input type="password" placeholder='Password' name='password' required className="form-control" id="password"
                         value={password} onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
-                    <label for="confirmPassword" className="form-label">Re-type Password</label>
-                    <input type="password" name='confirmPassword' className="form-control" id="confirmPassword"
+                <div className="mb-4">
+                    <input type="password" placeholder='Confirm Password' name='confirmPassword' className="form-control" id="confirmPassword"
                         value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                 </div>
-                <div className='mb-3'>
-                    <label for="role" className="form-label">Role</label>
-                    <select class="form-select" aria-label="Default select example"
+                <div className='mb-4'>
+                    <select required class="form-select" aria-label="Default select example"
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
                     >
-                        <option selected value="Admin">Admin</option>
+                        <option disabled selected value="">Select Role</option>
+                        <option value="Admin">Admin</option>
                         <option value="User">User</option>
                         {(userRole === 'Admin') &&
                             <>

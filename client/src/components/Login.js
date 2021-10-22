@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = ({ setLoginUser }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('Admin');
+    const [role, setRole] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
@@ -38,12 +38,11 @@ const Login = ({ setLoginUser }) => {
     return (
         <>
             <ToastContainer />
-            <form onSubmit={handleSubmit} className='container grid mt-4' style={{ width: '480px', border: '1px solid black', padding: '30px', borderRadius: '7px' }}>
-                <h2 style={{ marginBottom: '15px', textAlign: 'center' }}>Login</h2>
-                <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">Email
-                    </label>
+            <form onSubmit={handleSubmit} className='container grid mt-5' style={{ width: '480px', border: '1px solid black', padding: '30px', borderRadius: '7px' }}>
+                <h1 style={{ marginBottom: '10%', textAlign: 'center' }}>Login</h1>
+                <div className="mb-4">
                     <input type="email"
+                        placeholder="Email Address"
                         className="form-control"
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp"
@@ -51,22 +50,22 @@ const Login = ({ setLoginUser }) => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
-                    <label for="exampleInputPassword1" className="form-label">Password</label>
+                <div className="mb-4">
                     <input type="password"
+                        placeholder="Password"
                         className="form-control"
                         id="exampleInputPassword1"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <div className='mb-3'>
-                    <label for="role" className="form-label">Role</label>
-                    <select class="form-select" aria-label="Default select example"
+                <div className='mb-4'>
+                    <select required class="form-select" aria-label="Default select example"
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
                     >
-                        <option selected value="Admin">Admin</option>
+                        <option disabled selected value="">Select Role</option>
+                        <option value="Admin">Admin</option>
                         <option value="User">User</option>
                         <option value="Operator">Operator</option>
                         <option value="Manager">Manager</option>

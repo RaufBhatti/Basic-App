@@ -35,17 +35,15 @@ const AddProduct = () => {
     return (
         <>
             <ToastContainer />
-            <form onSubmit={handleSubmit} className='container grid mt-4' style={{ width: '480px', border: '1px solid black', padding: '30px', borderRadius: '7px' }}>
-                <h2 style={{ marginBottom: '15px', textAlign: 'center' }}>Add Product</h2>
-                <div className="mb-3">
-                    <label for="username" className="form-label">Title</label>
-                    <input type="text" name='title' required className="form-control" id="title"
+            <form onSubmit={handleSubmit} className='container grid mt-5' style={{ width: '480px', border: '1px solid black', padding: '30px', borderRadius: '7px' }}>
+                <h2 style={{ marginBottom: '10%', textAlign: 'center' }}>Add Product</h2>
+                <div className="mb-4">
+                    <input type="text" placeholder="Title" name='title' required className="form-control" id="title"
                         value={title} onChange={(e) => setTitle(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
-                    <label for="email" className="form-label">Price</label>
-                    <input type="number" name='price' required className="form-control" id="price" aria-describedby="emailHelp"
+                <div className="mb-4">
+                    <input type="number" placeholder="Price" name='price' required className="form-control" id="price" aria-describedby="emailHelp"
                         value={price} onChange={(e) => setPrice(e.target.value)}
                     />
                 </div>
